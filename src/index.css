@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* costum font */
+  --font-outfit: "Outfit", "Vazirmatn";
+  --font-vazir: "Vazirmatn";
+}
