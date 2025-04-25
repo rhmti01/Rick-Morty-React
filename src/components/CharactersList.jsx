@@ -1,14 +1,43 @@
 /* eslint-disable react/prop-types */
 import DataLoader from "./DataLoader";
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 
-function CharactersList({ Characters, isLoading }) {
+function CharactersList({
+  Characters,
+  isLoading,
+  onSelectCharacter,
+  selectedId,
+}) {
+  if (Characters.length < 1) {
+    return (
+      <div className=" flex items-center justify-center h-[555px] mt-2 bg-white rounded-[12px] basis-[37%] min-w-[390px]  w-full ">
+        <div className=" flex items-center justify-center w-full  flex-col ">
+          <h1 className=" font-bold text-[22px] text-blue-900 ">
+            Ups!... no results found!
+          </h1>
+          <br />
+          <p className=" font-medium text-[16px] text-gray-800 ">
+            Please try another search . . .
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="   basis-[37%] w-full flex items-center justify-center flex-col p-2 gap-y-4 ">
+    <div className="  basis-[37%] w-full flex items-center justify-center flex-col p-2 gap-y-3 ">
       {isLoading ? (
-        <DataLoader />
+        <div className=" flex items-center justify-center h-[555px] bg-white rounded-[12px] min-w-[390px]  w-full ">
+          <DataLoader />
+        </div>
       ) : (
         Characters.map((character) => (
-          <Character key={character.id} character={character} />
+          <Character
+            selectedId={selectedId}
+            key={character.id}
+            character={character}
+            onSelectCharacter={onSelectCharacter}
+          />
         ))
       )}
     </div>
@@ -17,9 +46,9 @@ function CharactersList({ Characters, isLoading }) {
 
 export default CharactersList;
 
-function Character({ character }) {
+function Character({ character, onSelectCharacter, selectedId }) {
   return (
-    <div className="  flex items-center justify-between py-3 pr-5 pl-4 bg-white rounded-[12px] w-full ">
+    <div className="  flex items-center justify-between py-3 pr-5 pl-4 bg-white rounded-[12px] min-w-[390px]  w-full ">
       <div className="  flex items-center justify-start gap-x-5 ">
         <img
           className=" w-[77px] rounded-lg "
@@ -28,27 +57,13 @@ function Character({ character }) {
         />
         <CharacterInfo character={character} />
       </div>
-      <div>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="currentColor"
-          className="size-6 cursor-pointer  "
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"
-          />
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-          />
-        </svg>
-      </div>
+      <button onClick={() => onSelectCharacter(character.id)}>
+        {selectedId == character.id ? (
+          <EyeSlashIcon className=" size-6 cursor-pointer " />
+        ) : (
+          <EyeIcon className=" size-6 cursor-pointer " />
+        )}
+      </button>
     </div>
   );
 }

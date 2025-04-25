@@ -1,46 +1,16 @@
 /* HTML: <div class="loader"></div> */
+/* HTML: <div class="loader"></div> */
 .loader {
-    width: 65px;
-    aspect-ratio: 1;
-    position: relative;
-  }
-  .loader:before,
-  .loader:after {
-    content: "";
-    position: absolute;
-    border-radius: 50px;
-    box-shadow: 0 0 0 3px inset #190a0a;
-    animation: l4 2.5s infinite;
-  }
-  .loader:after {
-    animation-delay: -1.25s;
-  }
-  @keyframes l4 {
-    0% {
-      inset: 0 35px 35px 0;
-    }
-    12.5% {
-      inset: 0 35px 0 0;
-    }
-    25% {
-      inset: 35px 35px 0 0;
-    }
-    37.5% {
-      inset: 35px 0 0 0;
-    }
-    50% {
-      inset: 35px 0 0 35px;
-    }
-    62.5% {
-      inset: 0 0 0 35px;
-    }
-    75% {
-      inset: 0 0 35px 35px;
-    }
-    87.5% {
-      inset: 0 0 35px 0;
-    }
-    100% {
-      inset: 0 35px 35px 0;
-    }
-  }
+  color: #000;
+  width: 4px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  box-shadow: 19px 0 0 7px, 38px 0 0 3px, 57px 0 0 0;
+  transform: translateX(-38px);
+  animation: l21 .5s infinite alternate linear;
+}
+
+@keyframes l21 {
+  50%  {box-shadow: 19px 0 0 3px, 38px 0 0 7px, 57px 0 0 3px}
+  100% {box-shadow: 19px 0 0 0  , 38px 0 0 3px, 57px 0 0 7px}
+}

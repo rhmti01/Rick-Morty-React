@@ -2,7 +2,7 @@ import '../App.css'
 
 function DataLoader() {
   return (
-    <div className="loader  mt-56 scale-75  "></div>
+    <div className="loader scale-75 w-full   "></div>
   );
 }
 

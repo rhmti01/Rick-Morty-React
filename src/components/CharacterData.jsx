@@ -1,7 +1,51 @@
 /* eslint-disable react/prop-types */
+import { useEffect, useState } from "react";
+// import DataLoader from "./DataLoader";
+import axios from "axios";
+import DataLoader from "./DataLoader";
+import toast from "react-hot-toast";
 
-function CharacterData({ character, episodes }) {
-  // console.log(episodes);
+function CharacterData({ selectedId }) {
+  const [isLoading, setIsLoading] = useState(false);
+  const [character, setCharacter] = useState(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        setCharacter(null)
+        setIsLoading(true);
+        const { data } = await axios.get(
+          `  https://rickandmortyapi.com/api/character/${selectedId}  `
+        );
+        setCharacter(data);
+      } catch (error){
+        toast.error(error.response.data.error)
+      } 
+      finally {
+        setIsLoading(false);
+      }
+    }
+
+    if (selectedId) fetchData();
+  }, [selectedId]);
+
+  if (isLoading) {
+    return (
+      <div className=" bg-white basis-[63%] w-full h-full flex items-center justify-center  mt-2 min-h-[445px] rounded-2xl ">
+        <DataLoader  />
+      </div>
+    );
+  }
+
+  if (!character || !selectedId)
+    return (
+      <div className=" flex items-center justify-center w-full h-96 ">
+        <p className=" font-medium text-lg text-gray-800 ">
+          Please select a character!
+        </p>
+      </div>
+    );
+
   return (
     <div className="bg-white rounded-xl  basis-[63%] w-full flex items-start justify-center flex-col mt-2 ">
       <div className="  flex items-start justify-start w-full ">
@@ -16,7 +60,6 @@ function CharacterData({ character, episodes }) {
               {character.name}
             </h3>
             <p className=" flex items-center text-zinc-700 text-base font-meduim ">
-              {" "}
               <span
                 className={`  ${
                   character.status == "Alive" ? "bg-green-500" : "bg-red-500"
@@ -58,9 +101,9 @@ function CharacterData({ character, episodes }) {
             </svg>
           </button>
         </div>
-        {episodes.map((episode) => (
-          <Episode key={episode.id} episode={episode} />
-        ))}
+        {/* {episodes.map((episode) => (
+        <Episode key={episode.id} episode={episode} />
+      ))} */}
       </div>
     </div>
   );
@@ -68,16 +111,15 @@ function CharacterData({ character, episodes }) {
 
 export default CharacterData;
 
-function Episode({ episode }) {
-  // console.log(episode);
-  return (
-    <div className=" flex items-center justify-between w-full px-2 py-2.5 ">
-      <p className=" font-medium ">
-        {String(episode.id).padStart(2, "0")} . {episode.episode.slice(0, 3)} -{" "}
-        {episode.episode.slice(3)} :{" "}
-        <span className=" font-bold ">{episode.name}</span>
-      </p>
-      <p className=" font-semibold ">{episode.air_date}</p>
-    </div>
-  );
-}
+// function Episode({ episode }) {
+//   return (
+//     <div className=" flex items-center justify-between w-full px-2 py-2.5 ">
+//       <p className=" font-medium ">
+//         {String(episode.id).padStart(2, "0")} . {episode.episode.slice(0, 3)} -{" "}
+//         {episode.episode.slice(3)} :{" "}
+//         <span className=" font-bold ">{episode.name}</span>
+//       </p>
+//       <p className=" font-semibold ">{episode.air_date}</p>
+//     </div>
+//   );
+// }
