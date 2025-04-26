@@ -53,7 +53,7 @@ function CharacterData({ selectedId, onAddFavorites, isAddedToFavorites }) {
           characters or <br />
           <span className="px-[1px] font-bold">Select</span> a character !
         </p>
-        {/* <img src="/src/assets/Thinking face.gif" className="w-72 mt-6 " /> */}
+        {/* <img src="/src/assets/Thinking-face.gif" className="w-72 mt-6 " /> */}
       </div>
     );
 
@@ -163,7 +163,6 @@ function EpisodeList({ episodes }) {
       (a, b) => new Date(b.created) - new Date(a.created)
     );
   }
-  console.log(sortBy, episodes);
 
   return (
     <div className=" px-6 py-5 w-full ">
@@ -179,7 +178,9 @@ function EpisodeList({ episodes }) {
             viewBox="0 0 24 24"
             strokeWidth="3"
             stroke="currentColor"
-            className={`  stroke-white size-3.5 duration-300 ${sortBy ? "rotate-0 " : "rotate-180"}  `}
+            className={`  stroke-white size-3.5 duration-300 ${
+              sortBy ? "rotate-0 " : "rotate-180"
+            }  `}
           >
             <path
               strokeLinecap="round"

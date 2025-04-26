@@ -64,3 +64,14 @@ div::-webkit-scrollbar-thumb {
   -o-border-radius: 11px;
   cursor: pointer;
 }
+
+
+/* costume class */
+
+.z110{
+  z-index: 110;
+}
+
+.z-1{
+  z-index: 1;
+}
