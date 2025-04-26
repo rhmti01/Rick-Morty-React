@@ -1,17 +1,17 @@
 /* eslint-disable react/prop-types */
 
-import ThemeSwitch from "./ThemeSwitch";
+// import ThemeSwitch from "./ThemeSwitch";
 
-function Navbar({ query, setQuery }) {
+function Navbar({ query, setQuery , favorites}) {
   return (
-    <div className="  w-full py-3.5 mt-6 bg-white dark:bg-black rounded-xl flex items-center justify-around flex-wrap  ">
-      <h2 className=" font-bold  2xl:text-[26px] xl:text-[24.5px] xg:text-[22px] xx:text-[20px] mm:text-[22px] ss:text-[22px] my-0  bg-[#202329]  inline-block text-transparent bg-clip-text  ">
+    <div className="  w-full py-3.5 mt-6 bg-white dark:bg-gray-950 rounded-xl flex items-center justify-around flex-wrap  ">
+      <h2 className=" font-bold  2xl:text-[26px] xl:text-[24.5px] xg:text-[22px] xx:text-[20px] mm:text-[22px] ss:text-[22px] my-0 dark:bg-white bg-[#202329]  inline-block text-transparent bg-clip-text  ">
         Rick-Morty Movie
       </h2>
       <Search query={query} setQuery={setQuery} />
       <div className=" flex items-center justify-center  gap-x-3 ">
-        <FavoriteCharacters />
-        <ThemeSwitch />
+        <FavoriteCharacters numOfFavorites={favorites.length}  />
+        {/* <ThemeSwitch   /> */}
       </div>
     </div>
   );
@@ -23,25 +23,25 @@ function Search({ query, setQuery }) {
   return (
     <div
       id="search"
-      className=" border-[1px] border-stone-200 justify-around bg-gray-100/90 focus: dark:bg-gray-700 dark:text-slate-100 basis-[27%] flex  items-center md:px-1 md:py-2 xl:px-2 xl:py-3 rounded-xl  lg:max-w-lg xl:max-w-xl 2xl:max-w-xl  "
+      className=" border-[1px] border-stone-200 dark:border-stone-800 justify-around bg-gray-100/90 focus: dark:bg-gray-800 dark:text-slate-300 basis-[27%] flex  items-center md:px-1 md:py-2 xl:px-2 xl:py-3 rounded-xl  lg:max-w-lg xl:max-w-xl 2xl:max-w-xl  "
     >
       <input
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Serach New Character..."
         type="text"
-        className="  border-none placeholder-zinc-500 dark:placeholder-white dark:text-white bg-transparent border-1 border-white  lg:mr-2 outline-none  md:text-xs lg:text-[13px] xl:text-[15px] font-normal text-zinc-900 "
+        className="  border-none placeholder-zinc-500 dark:placeholder-gray-300 dark:text-white bg-transparent border-1 border-white  lg:mr-2 outline-none  md:text-xs lg:text-[13px] xl:text-[15px] font-normal text-zinc-900 "
       />
       <SearchIcon query={query} setQuery={setQuery} />
     </div>
   );
 }
 
-function FavoriteCharacters() {
+function FavoriteCharacters({numOfFavorites}) {
   return (
     <div className=" relative ">
       <span className="  absolute -top-1 -right-1 p-y-0.5 px-1 text-red-50 bg-red-600 text-[12px] rounded-full ">
-        5
+        {numOfFavorites}
       </span>
       <svg
         xmlns="http://www.w3.org/2000/svg"

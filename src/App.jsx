@@ -11,34 +11,51 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [query, setQuery] = useState("");
   const [selectedId, selectId] = useState(null);
+  const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
+    const controller = new AbortController();
+    const signal = controller.signal;
     async function fetchData() {
       try {
         setIsLoading(true);
         const { data } = await axios.get(
-          `   https://rickandmortyapi.com/api/character/?name=${query}     `
+          `   https://rickandmortyapi.com/api/character/?name=${query}     `,
+          { signal }
         );
         setCharacters(data.results.slice(0, 5));
       } catch (error) {
-        setCharacters([]);
-        toast.error(error.response.data.error);
+        if (!axios.isCancel()) {
+          setCharacters([]);
+          toast.error(error.response.data.error);
+        }
       } finally {
         setIsLoading(false);
       }
     }
 
     fetchData();
+
+    return () => {
+      controller.abort();
+    };
   }, [query]);
 
   const onHandleSelectCharacter = (id) => {
     selectId((prevId) => (prevId == id ? null : id));
   };
 
+  const onAddFavorites = (character) => {
+    setFavorites((prevFav) => [...prevFav, character]);
+    toast.success(`  ${character.name} added to favorites!  `);
+  };
+
+  const isAddedToFavorites = favorites.find((fav) => fav.id == selectedId);
+
   return (
     <div className=" select-none w-full 2xl:max-w-[1200px] xl:max-w-[1050px]  flex items-center flex-col pb-12 ">
       <Toaster />
-      <Navbar query={query} setQuery={setQuery} />
+      <Navbar query={query} setQuery={setQuery} favorites={favorites} />
       <div className=" mt-2 bg-blue-200/ flex items-start justify-between w-11/12 gap-x-3  ">
         <CharactersList
           selectedId={selectedId}
@@ -46,7 +63,11 @@ function App() {
           isLoading={isLoading}
           onSelectCharacter={onHandleSelectCharacter}
         />
-        <CharacterData selectedId={selectedId} />
+        <CharacterData
+          selectedId={selectedId}
+          onAddFavorites={onAddFavorites}
+          isAddedToFavorites={isAddedToFavorites}
+        />
       </div>
     </div>
   );

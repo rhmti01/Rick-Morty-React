@@ -10,7 +10,7 @@ function CharactersList({
 }) {
   if (Characters.length < 1) {
     return (
-      <div className=" flex items-center justify-center h-[555px] mt-2 bg-white rounded-[12px] basis-[37%] min-w-[390px]  w-full ">
+      <div className=" flex items-center justify-center h-[555px] mt-2 bg-white rounded-[12px] basis-[37%] min-w-[320px]  w-full ">
         <div className=" flex items-center justify-center w-full  flex-col ">
           <h1 className=" font-bold text-[22px] text-blue-900 ">
             Ups!... no results found!
@@ -27,7 +27,7 @@ function CharactersList({
   return (
     <div className="  basis-[37%] w-full flex items-center justify-center flex-col p-2 gap-y-3 ">
       {isLoading ? (
-        <div className=" flex items-center justify-center h-[555px] bg-white rounded-[12px] min-w-[390px]  w-full ">
+        <div className=" flex items-center justify-center h-[555px] bg-white rounded-[12px] min-w-[320px]  w-full ">
           <DataLoader />
         </div>
       ) : (
@@ -48,7 +48,7 @@ export default CharactersList;
 
 function Character({ character, onSelectCharacter, selectedId }) {
   return (
-    <div className="  flex items-center justify-between py-3 pr-5 pl-4 bg-white rounded-[12px] min-w-[390px]  w-full ">
+    <div className="  flex items-center justify-between py-3 pr-5 pl-4 bg-white rounded-[12px] min-w-[320px]  w-full ">
       <div className="  flex items-center justify-start gap-x-5 ">
         <img
           className=" w-[77px] rounded-lg "
