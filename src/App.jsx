@@ -66,7 +66,7 @@ function App() {
 
 
   return (
-    <div className=" select-none w-full 2xl:max-w-[1200px] xl:max-w-[1050px]  flex items-center flex-col pb-12 ">
+    <div className=" select-none w-full 2xl:max-w-[1240px] xl:max-w-[1090px] lg:max-w-[980px] flex items-center flex-col xl:pb-12 lg:pb-8 ">
       <Toaster />
       <Navbar
         query={query}
@@ -74,7 +74,7 @@ function App() {
         favorites={favorites}
         onHandleRemove={onHandleRemoveFav}
       />
-      <div className=" mt-2 bg-blue-200/ flex items-start justify-between w-11/12 gap-x-3  ">
+      <div className=" mt-2 bg-blue-200/ flex items-start justify-between w-11/12 2xl:gap-x-3  lg:gap-x-2  ">
         <CharactersList
           selectedId={selectedId}
           Characters={Characters}

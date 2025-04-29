@@ -3,18 +3,18 @@
 import { HeartIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import FavModal from "./FavModal";
-// import ThemeSwitch from "./ThemeSwitch";
+import ThemeSwitch from "./ThemeSwitch";
 
 function Navbar({ query, setQuery, favorites , onHandleRemove }) {
   return (
-    <div className="  w-full py-3.5 mt-6 bg-white dark:bg-gray-950 rounded-xl flex items-center justify-around flex-wrap  ">
-      <h2 className=" font-bold  2xl:text-[26px] xl:text-[24.5px] xg:text-[22px] xx:text-[20px] mm:text-[22px] ss:text-[22px] my-0 dark:bg-white bg-[#202329]  inline-block text-transparent bg-clip-text  ">
+    <div className="  w-full 2xl:py-3.5 xl:py-[13px] lg:py-3 xl:mt-6 lg:mt-3.5 bg-white dark:bg-gray-950 rounded-xl flex items-center justify-around flex-wrap  ">
+      <h2 className=" font-bold  2xl:text-[26px] xl:text-[24px] lg:text-[22px]  my-0 dark:bg-white bg-[#202329]  inline-block text-transparent bg-clip-text  ">
         Rick-Morty Movie
       </h2>
       <Search query={query} setQuery={setQuery} />
       <div className=" flex items-center justify-center  gap-x-3 ">
         <FavoriteCharacters favorites={favorites} onHandleRemove={onHandleRemove} />
-        {/* <ThemeSwitch   /> */}
+        <ThemeSwitch   />
       </div>
     </div>
   );
@@ -26,14 +26,14 @@ function Search({ query, setQuery }) {
   return (
     <div
       id="search"
-      className=" border-[1px] border-stone-200 dark:border-stone-800 justify-around bg-gray-100/90 focus: dark:bg-gray-800 dark:text-slate-300 basis-[27%] flex  items-center md:px-1 md:py-2 xl:px-2 xl:py-3 rounded-xl  lg:max-w-lg xl:max-w-xl 2xl:max-w-xl  "
+      className=" xl:px-2 lg:px-3 xl:py-3  lg:py-3  border-[1px] border-stone-200 dark:border-stone-800 justify-around bg-gray-100/90 focus: dark:bg-gray-800 dark:text-slate-300 basis-[27%] flex  items-center rounded-xl  lg:max-w-lg xl:max-w-xl 2xl:max-w-xl  "
     >
       <input
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Serach New Character..."
         type="text"
-        className="  border-none placeholder-zinc-500 dark:placeholder-gray-300 dark:text-white bg-transparent border-1 border-white  lg:mr-2 outline-none  md:text-xs lg:text-[13px] xl:text-[15px] font-normal text-zinc-900 "
+        className=" 2xl:pl-0 xl:pl-2 lg:mr-2 2xl:text-[15px] lg:text-[14.5px]   border-none placeholder-zinc-500 dark:placeholder-gray-300 dark:text-white bg-transparent border-1 border-white   outline-none font-normal text-zinc-900 "
       />
       <SearchIcon query={query} setQuery={setQuery} />
     </div>
@@ -47,10 +47,10 @@ function FavoriteCharacters({ favorites , onHandleRemove }) {
     <>
       <FavModal isOpen={isOpen} setIsOpen={setIsOpen} favorites={favorites} onHandleRemove={onHandleRemove} />
       <button className=" relative " onClick={() => setIsOpen(!isOpen)}>
-        <span className="  absolute -top-1 -right-1 p-y-0.5 px-1 text-red-50 bg-red-600 text-[12px] rounded-full ">
+        <span className="  absolute -top-1 -right-1 p-y-0.5 px-1 text-red-50 bg-red-600 xl:text-[12px] lg:text-[12px] rounded-full ">
           {favorites.length}
         </span>
-        <HeartIcon className="size-8 stroke-red-500 z-10 cursor-pointer" />
+        <HeartIcon className=" 2xl:size-8 xl:size-[30px] lg:size-7 stroke-red-500 z-10 cursor-pointer" />
       </button>
     </>
   )
@@ -65,7 +65,7 @@ function SearchIcon({ query, setQuery }) {
         viewBox="0 0 24 24"
         strokeWidth={2}
         stroke="currentColor"
-        className="size-7 scale-[85%] mx-2 stroke-gray-600 cursor-pointer"
+        className="size-7 2xl:scale-[85%]  lg:scale-[90%] mx-2 stroke-gray-600 cursor-pointer"
         onClick={() => setQuery("")}
       >
         <path
@@ -79,7 +79,7 @@ function SearchIcon({ query, setQuery }) {
 
   return (
     <svg
-      className=" mx-2 stroke-black size-7 scale-[85%] cursor-pointer  "
+      className=" xl:mx-2 lg:mx-0 stroke-black size-7 2xl:scale-[85%] xl:scale-[83%] lg:scale-[80%] cursor-pointer  "
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
