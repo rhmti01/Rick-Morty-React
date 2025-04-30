@@ -10,13 +10,13 @@ function CharactersList({
 }) {
   if (Characters.length < 1) {
     return (
-      <div className="  xl:mr-[10px] lg:mr-[8px] flex items-center justify-center h-[555px] mt-2 bg-white rounded-[12px] basis-[37%] min-w-[320px]  w-full ">
+      <div className="  xl:mr-[10px] lg:mr-[8px] md:mr-2 flex items-center justify-center xl:h-[555px] lg:h-[500px] md:h-[450px] mt-2 bg-white rounded-[12px] lg:basis-[37%] md:basis-[40%] min-w-[320px]  w-full ">
         <div className=" flex items-center justify-center w-full  flex-col ">
-          <h1 className=" font-bold text-[22px] text-blue-900 ">
+          <h1 className=" font-bold xl:text-[22px] lg:text-[21px] md:text-[19px] text-blue-900 ">
             Ups!... no results found!
           </h1>
           <br />
-          <p className=" font-medium text-[16px] text-gray-800 ">
+          <p className=" font-medium xl:text-[17px] lg:text-[16px] md:text-[15px ] text-gray-800 ">
             Please try another search . . .
           </p>
         </div>
@@ -25,7 +25,7 @@ function CharactersList({
   }
 
   return (
-    <div className="  basis-[37%] w-full flex items-center justify-center flex-col p-2 gap-y-3 ">
+    <div className="  lg:basis-[37%] md:basis-[40%] w-full flex items-center justify-center flex-col p-2 lg:gap-y-3 md:gap-y-2 ">
       {isLoading ? (
         <div className=" flex items-center justify-center h-[555px] bg-white rounded-[12px] min-w-[320px]  w-full ">
           <DataLoader />
@@ -48,10 +48,10 @@ export default CharactersList;
 
 function Character({ character, onSelectCharacter, selectedId }) {
   return (
-    <div className="  flex items-center justify-between xl:py-2.5 lg:py-2.5 xl:pr-[18px] lg:pr-4.5 2xl:pl-4 xl:pl-3.5 lg:pl-3 bg-white rounded-[12px] min-w-[320px]  w-full ">
-      <div className="  flex items-center justify-start 2xl:gap-x-5 xl:gap-x-[18px] gap-x-5 ">
+    <div className="  flex items-center justify-between xl:py-2.5 lg:py-2.5 md:py-2 xl:pr-[18px] lg:pr-4.5 md:pr-4 2xl:pl-4 xl:pl-3.5 lg:pl-3 md:pl-2 bg-white rounded-[12px] lg:min-w-[320px]   w-full ">
+      <div className="  flex items-center justify-start 2xl:gap-x-5 xl:gap-x-[18px] lg:gap-x-5 md:gap-x-5  ">
         <img
-          className=" 2xl:w-[84px] xl:w-[82px] lg:w-[79px]  rounded-lg "
+          className=" 2xl:w-[84px] xl:w-[82px] lg:w-20 md:w-[78px] rounded-lg "
           src={character.image}
           alt="character photo"
         />
@@ -59,9 +59,9 @@ function Character({ character, onSelectCharacter, selectedId }) {
       </div>
       <button onClick={() => onSelectCharacter(character.id)}>
         {selectedId == character.id ? (
-          <EyeSlashIcon className=" 2xl:size-6 xl:size-[22px] lg:size-[22px] cursor-pointer " />
+          <EyeSlashIcon className=" 2xl:size-6 xl:size-[22px] lg:size-[22px] md:size-5 cursor-pointer " />
         ) : (
-          <EyeIcon className=" 2xl:size-6 xl:size-[22px] lg:size-[22px] cursor-pointer " />
+          <EyeIcon className=" 2xl:size-6 xl:size-[22px] lg:size-[22px] md:size-5 cursor-pointer " />
         )}
       </button>
     </div>
@@ -70,11 +70,11 @@ function Character({ character, onSelectCharacter, selectedId }) {
 
 function CharacterInfo({ character }) {
   return (
-    <div className=" flex flex-col xl:gap-y-2 lg:gap-y-1.5 ">
-      <h3 className="  text-zinc-950 2xl:text-[18px] xl:text-[17.5px] font-semibold ">
+    <div className=" flex flex-col xl:gap-y-2 lg:gap-y-1.5 md:gap-y-1.5 ">
+      <h3 className="  text-zinc-950 2xl:text-[18px] xl:text-[17.5px] lg:text-[17px] md:text-[16.5px] font-semibold ">
         {character.name}
       </h3>
-      <p className=" flex items-center text-zinc-600 2xl:text-base xl:text-[15px] font-[500] ">
+      <p className=" flex items-center text-zinc-600 2xl:text-base xl:text-[15px] lg:text-[15px] md:text-[14.5px] font-[500] ">
         <span
           className={`  ${
             character.status == "Alive" ? "bg-green-500" : "bg-red-500"

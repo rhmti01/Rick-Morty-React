@@ -39,7 +39,7 @@ function CharacterData({ selectedId, onAddFavorites, isAddedToFavorites }) {
 
   if (isLoading) {
     return (
-      <div className=" bg-white basis-[63%] w-full h-full flex items-center justify-center  mt-2 min-h-[445px] rounded-xl ">
+      <div className="  bg-white lg:basis-[63%] md:basis-[60%] w-full h-full flex items-center justify-center  mt-2 min-h-[445px] rounded-xl ">
         <DataLoader />
       </div>
     );
@@ -47,21 +47,21 @@ function CharacterData({ selectedId, onAddFavorites, isAddedToFavorites }) {
 
   if (!character || !selectedId)
     return (
-      <div className="  bg-white basis-[63%] w-full h-full flex items-center justify-center flex-col  mt-2 pt-4 min-h-[445px] rounded-xl">
-        <p className=" font-semibold 2xl:text-lg xl:text-[16.5px] text-gray-800 text-center leading-8 ">
+      <div className="  bg-white lg:basis-[63%] md:basis-[60%] w-full h-full flex items-center justify-center flex-col  mt-2 pt-4 min-h-[445px] rounded-xl">
+        <p className=" font-semibold 2xl:text-lg xl:text-[16.5px] md:text-base text-gray-800 text-center leading-8 ">
           Please <span className="px-[1px]  font-bold ">Search</span> in movie
           characters or <br />
           <span className="px-[1px] font-bold">Select</span> a character !
         </p>
         <img
           src="./assets/Thinking-face.gif"
-          className="2xl:w-68 xl:w-60 lg:w-52 mt-6 "
+          className="2xl:w-68 xl:w-60 lg:w-52 md:w-44 mt-6  "
         />
       </div>
     );
 
   return (
-    <div className="bg-white rounded-xl  basis-[63%] w-full flex items-start justify-center flex-col mt-2 ">
+    <div className="bg-white rounded-xl  lg:basis-[63%] md:basis-[60%] w-full flex items-start justify-center flex-col mt-2 ">
       <CharacterSubInfo
         character={character}
         onAddFavorites={onAddFavorites}
@@ -74,35 +74,21 @@ function CharacterData({ selectedId, onAddFavorites, isAddedToFavorites }) {
 
 export default CharacterData;
 
-function Episode({ episode }) {
-  return (
-    <div className=" flex items-center justify-between w-full 2xl:p-2 xl:p-1.5 lg:p-[7px]  ">
-      <p className=" font-[500]  2xl:text-base xl:text-[15.5px] lg:text-[15px] ">
-        {String(episode.id).padStart(2, "0")} . {episode.episode.slice(0, 3)} -{" "}
-        {episode.episode.slice(3)} :{" "}
-        <span className="  font-[600] ">{episode.name}</span>
-      </p>
-      <p className=" 2xl:text-base xl:text-[15px] lg:text-[14px] font-normal px-2 py-0.5 bg-gray-700 rounded-lg text-gray-50 ">
-        {episode.air_date}
-      </p>
-    </div>
-  );
-}
 
 function CharacterSubInfo({ character, onAddFavorites, isAddedToFavorites }) {
   return (
     <div className="  flex items-start justify-start w-full ">
       <img
-        className="2xl:size-68 xl:size-56 lg:size-48 rounded-xl xl:m-5 lg:m-6  "
+        className="2xl:size-68 xl:size-56 lg:size-48 md:size-48 rounded-xl xl:m-5 lg:m-6 md:m-4.5 "
         src={character.image}
         alt="character photo"
       />
-      <div className=" flex flex-col  2xl:py-8 xl:py-6 lg:py-7 px-2 ">
+      <div className=" flex flex-col  2xl:py-8 xl:py-6 lg:py-7 md:py-6 px-2 ">
         <div className=" flex items-start justify-around flex-col gap-y-1 ">
-          <h3 className="  text-zinc-950 2xl:text-[20px] xl:text-[19px] lg:text-[17.5px] font-semibold ">
+          <h3 className="  text-zinc-950 2xl:text-[20px] xl:text-[19px] lg:text-[17.5px] md:text-[17px] font-semibold ">
             {character.name}
           </h3>
-          <p className=" flex items-center text-zinc-600 2xl:text-base xl:text-[15px] lg:text-[14.5px] font-[500] ">
+          <p className=" flex items-center text-zinc-600 2xl:text-base xl:text-[15.5px] lg:text-[15px] md:text-[15px] font-[500] ">
             <span
               className={`  ${
                 character.status == "Alive" ? "bg-green-500" : "bg-red-500"
@@ -111,18 +97,18 @@ function CharacterSubInfo({ character, onAddFavorites, isAddedToFavorites }) {
             {character.status} - {character.species}
           </p>
         </div>
-        <div className=" flex flex-col 2xl:mt-6 xl:mt-4 lg:mt-3 ">
-          <p className=" 2xl:text-[17px] xl:text-[16px] lg:text-[15.5px] font-semilight text-zinc-500 ">
+        <div className=" flex flex-col 2xl:mt-6 xl:mt-4 lg:mt-3 md:mt-3 ">
+          <p className=" 2xl:text-[17px] xl:text-[16px] lg:text-[15.5px] md:text-[15px] font-semilight text-zinc-500 ">
             Last known location:
           </p>
-          <p className=" 2xl:text-[17px] xl:text-[16px] lg:text-[15.5px] mt-1 font-semibold text-zinc-800 ">
+          <p className=" 2xl:text-[17px] xl:text-[16px] lg:text-[15.5px] md:text-[15px] mt-1 font-semibold text-zinc-800 ">
             {character.location.name}
           </p>
         </div>
         {isAddedToFavorites ? (
           <button
             disabled
-            className=" 2xl:text-base xl:text-[15px] lg:text-[15px] hover:bg-zinc-800 flex items-center justify-center gap-x-2  py-2 xl:px-7 lg:px-5 rounded-[8px] cursor-default xl:mt-8 lg:mt-6 bg-zinc-900 border-2 border-zinc-900  text-zinc-100 "
+            className=" 2xl:text-base xl:text-[15px] lg:text-[15px] md:text-[14.5px] hover:bg-zinc-900 flex items-center justify-center gap-x-2  py-2 xl:px-7 lg:px-5 md:px-4 rounded-[8px] cursor-default xl:mt-8 lg:mt-6 md:mt-5 bg-zinc-900 border-2 border-zinc-900  text-white font-medium "
           >
             Already in Favorites !
             <svg
@@ -131,7 +117,7 @@ function CharacterSubInfo({ character, onAddFavorites, isAddedToFavorites }) {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="size-6 stroke-gray-200 "
+              className=" lg:size-6 md:size-5 stroke-gray-200 "
             >
               <path
                 strokeLinecap="round"
@@ -143,7 +129,7 @@ function CharacterSubInfo({ character, onAddFavorites, isAddedToFavorites }) {
         ) : (
           <button
             onClick={() => onAddFavorites(character)}
-            className=" 2xl:text-base xl:text-[15px] lg:text-[15px] hover:bg-zinc-800 shadow-2xl shadow-zinc-200 py-[7px] xl:px-7 lg:px-5 rounded-[8px] cursor-pointer bg-zinc-300 border-2 border-zinc-400 xl:mt-8 lg:mt-6  text-zinc-700 font-medium "
+            className=" 2xl:text-base xl:text-[15px] lg:text-[15px] md:text-[14.5px] hover:bg-zinc-800 duration-200 shadow-2xl shadow-zinc-200 py-[7px] xl:px-7 lg:px-5  md:px-4 rounded-[8px] cursor-pointer bg-zinc-300 border-2 border-zinc-400 xl:mt-8 lg:mt-6 md:mt-5 text-zinc-700 hover:text-white hover:border-zinc-800 font-medium "
           >
             Add to Favorites !
           </button>
@@ -152,6 +138,7 @@ function CharacterSubInfo({ character, onAddFavorites, isAddedToFavorites }) {
     </div>
   );
 }
+
 
 function EpisodeList({ episodes }) {
   const [sortBy, setSortBy] = useState(false);
@@ -170,7 +157,7 @@ function EpisodeList({ episodes }) {
   return (
     <div className=" px-6 2xl:py-4 xl:py-3.5 lg:py-3 w-full ">
       <div className=" flex items-center justify-between ">
-        <h4 className=" font-semibold 2xl:text-2xl xl:text-[22px] lg:text-[21px] 2xl:py-4 xl:py-2.5 lg:py-2.5 ">
+        <h4 className=" font-semibold 2xl:text-2xl xl:text-[22px] lg:text-[21px] md:text-[20px] 2xl:py-4 xl:py-2.5 lg:py-2.5 md:py-2 ">
           List of Episodes:
         </h4>
         <button
@@ -183,7 +170,7 @@ function EpisodeList({ episodes }) {
             viewBox="0 0 24 24"
             strokeWidth="3"
             stroke="currentColor"
-            className={`  stroke-white xl:size-3.5 lg:size-3 duration-300 ${
+            className={`  stroke-white xl:size-3.5 lg:size-3 md:size-3 duration-300 ${
               sortBy ? "rotate-0 " : "rotate-180"
             }  `}
           >
@@ -195,11 +182,26 @@ function EpisodeList({ episodes }) {
           </svg>
         </button>
       </div>
-      <div className=" max-h-40 w-full overflow-auto xl:pr-5 lg:pr-4 my-2 ">
+      <div className=" lg:max-h-40 md:max-h-32 w-full overflow-auto xl:pr-5 lg:pr-4 md:pr-3 my-2 ">
         {sortedEpisodes.map((episode) => (
           <Episode key={episode.id} episode={episode} />
         ))}
       </div>
+    </div>
+  );
+}
+
+function Episode({ episode }) {
+  return (
+    <div className=" flex items-center justify-between w-full 2xl:p-2 xl:p-1.5 lg:p-[7px] md:p-[5px]  ">
+      <p className=" font-[500]  2xl:text-base xl:text-[15.5px] lg:text-[15px] md:text-[15] ">
+        {String(episode.id).padStart(2, "0")} . {episode.episode.slice(0, 3)} -{" "}
+        {episode.episode.slice(3)} :{" "}
+        <span className="  font-[600] ">{episode.name}</span>
+      </p>
+      <p className=" 2xl:text-base xl:text-[15px] lg:text-[14px] md:text-[14px] font-normal px-2 py-0.5 bg-gray-700 rounded-lg text-gray-50 ">
+        {episode.air_date}
+      </p>
     </div>
   );
 }

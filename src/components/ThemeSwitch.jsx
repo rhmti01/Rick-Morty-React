@@ -39,7 +39,7 @@ function ThemeSwitch() {
         onClick={handleTheme}
         className={` ${
           theme === "dark" ? "block" : "hidden"
-        }  dark:stroke-white 2xl:size-8 xl:size-[30px] lg:size-7 cursor-pointer   `}
+        }  dark:stroke-white 2xl:size-8 xl:size-[30px] lg:size-7 md:size-6 cursor-pointer   `}
         id="light"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
