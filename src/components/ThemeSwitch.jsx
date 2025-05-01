@@ -39,7 +39,7 @@ function ThemeSwitch() {
         onClick={handleTheme}
         className={` ${
           theme === "dark" ? "block" : "hidden"
-        }  dark:stroke-white 2xl:size-8 xl:size-[30px] lg:size-7 md:size-6 cursor-pointer   `}
+        }  dark:stroke-white 2xl:size-8 xl:size-[30px] lg:size-7 md:size-6 sm:size-[26px] cursor-pointer   `}
         id="light"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -57,7 +57,7 @@ function ThemeSwitch() {
         onClick={handleTheme}
         className={`  ${
           theme === "dark" ? "hidden" : "block"
-        } stroke-gray-800 2xl:size-8 lg:size-7.5 md:size-7 sm:size-7 ss:size-6 cursor-pointer `}
+        } stroke-gray-800 2xl:size-8 lg:size-7.5 md:size-7 sm:size-[26px]  cursor-pointer `}
         id="dark"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

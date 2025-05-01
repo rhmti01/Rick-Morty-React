@@ -66,7 +66,7 @@ function App() {
 
 
   return (
-    <div className=" duration-300 select-none w-full 2xl:max-w-[1240px] xl:max-w-[1090px] lg:max-w-[980px] md:max-w-full flex items-center flex-col xl:pb-12 lg:pb-8 md:pb-6 ">
+    <div className=" duration-300 select-none w-full 2xl:max-w-[1240px] xl:max-w-[1090px] lg:max-w-[980px] md:max-w-full flex items-center flex-col xl:pb-12 lg:pb-8 md:pb-6 sm:pb-6 ">
       <Toaster />
       <Navbar
         query={query}
@@ -74,7 +74,7 @@ function App() {
         favorites={favorites}
         onHandleRemove={onHandleRemoveFav}
       />
-      <div className="duration-300 lg:mt-2 md:mt-1 bg-blue-200/ flex items-start justify-between xl:w-11/12 md:w-[97%] 2xl:gap-x-3 lg:gap-x-2 md:gap-x-1.5 ">
+      <div className="duration-300 lg:mt-2 md:mt-1 flex items-start justify-between md:flex-row sm:flex-col xl:w-11/12 md:w-[97%] sm:w-9/12  2xl:gap-x-3 lg:gap-x-2 md:gap-x-1.5 sm:gap-y-1 ">
         <CharactersList
           selectedId={selectedId}
           Characters={Characters}
