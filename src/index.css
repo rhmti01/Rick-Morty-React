@@ -6,4 +6,8 @@
   /* costum font */
   --font-outfit: "Outfit", "Vazirmatn";
   --font-vazir: "Vazirmatn";
+  /* new break points */
+  --breakpoint-xs: 30rem;
+  --breakpoint-logo-xs: 36rem;
+  --breakpoint-xx: 18rem;
 }
