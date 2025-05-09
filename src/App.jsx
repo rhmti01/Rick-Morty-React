@@ -66,7 +66,7 @@ function App() {
 
 
   return (
-    <div className=" duration-300 select-none w-full 2xl:max-w-[1240px] xl:max-w-[1090px] lg:max-w-[980px] md:max-w-full flex items-center flex-col xl:pb-12 lg:pb-8 md:pb-6 sm:pb-14 xs:pb-10 xx:pb-8 ">
+    <div className="  duration-300 select-none w-full 2xl:max-w-[1240px] xl:max-w-[1090px] lg:max-w-[980px] md:max-w-full flex items-center flex-col xl:pb-12 lg:pb-8 md:pb-6 sm:pb-14 xs:pb-10 xx:pb-8 ">
       <Toaster />
       <Navbar
         query={query}

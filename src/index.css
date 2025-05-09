@@ -10,4 +10,6 @@
   --breakpoint-xs: 30rem;
   --breakpoint-logo-xs: 36rem;
   --breakpoint-xx: 18rem;
+  /* costum colors */
+  --color-dk : #060d1a  ;
 }
