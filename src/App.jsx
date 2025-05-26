@@ -1,53 +1,21 @@
 import CharactersList from "./components/CharactersList.jsx";
 import CharacterData from "./components/CharacterData.jsx";
 import Navbar from "./components/Navbar.jsx";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import toast, { Toaster } from "react-hot-toast";
-import axios from "axios";
+import userCharacters from "./hooks/userCharacters.js";
+import userLocalStorage from "./hooks/userLocalStorage.js";
 
 function App() {
-  const [Characters, setCharacters] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const [query, setQuery] = useState("");
+  const { Characters, isLoading } = userCharacters(
+    "https://rickandmortyapi.com/api/character/?name",
+    query
+  );
   const [selectedId, selectId] = useState(null);
 
-  const [favorites, setFavorites] = useState(() => {
-    const savedNotes = localStorage.getItem("favorites");
-    return savedNotes ? JSON.parse(savedNotes) : [];
-  });
-
-  useEffect(()=>{
-    localStorage.setItem("favorites", JSON.stringify(favorites))
-  }, [favorites])
-
-  useEffect(() => {
-    const controller = new AbortController();
-    const signal = controller.signal;
-    async function fetchData() {
-      try {
-        setIsLoading(true);
-        const { data } = await axios.get(
-          `   https://rickandmortyapi.com/api/character/?name=${query}     `,
-          { signal }
-        );
-        setCharacters(data.results.slice(0, 5));
-      } catch (error) {
-        if (!axios.isCancel()) {
-          setCharacters([]);
-          toast.error(error.response.data.error);
-        }
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    fetchData();
-
-    return () => {
-      controller.abort();
-    };
-  }, [query]);
+  const [favorites,setFavorites] = userLocalStorage("favorites",[])
 
   const onHandleSelectCharacter = (id) => {
     selectId((prevId) => (prevId == id ? null : id));
@@ -60,10 +28,9 @@ function App() {
 
   const isAddedToFavorites = favorites.find((fav) => fav.id == selectedId);
 
-  const onHandleRemoveFav = (id) =>{
-     setFavorites((prevFav) => prevFav.filter((fav)=>fav.id !== id))
-  }
-
+  const onHandleRemoveFav = (id) => {
+    setFavorites((prevFav) => prevFav.filter((fav) => fav.id !== id));
+  };
 
   return (
     <div className="  duration-300 select-none w-full 2xl:max-w-[1240px] xl:max-w-[1090px] lg:max-w-[980px] md:max-w-full flex items-center flex-col xl:pb-12 lg:pb-8 md:pb-6 sm:pb-14 xs:pb-10 xx:pb-8 ">
