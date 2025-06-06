@@ -35,5 +35,4 @@ Special thanks to:
 
 ## 🔗 Important Links
 - **Live Demo**: [https://rick-morty-react-rhmti01.netlify.app/](https://rick-morty-react-rhmti01.netlify.app/)
-- **GitHub Repository**: [https://github.com/rhmti01/Rick-Morty-React](https://github.com/rhmti01/Rick-Morty-React)-
 - **Refrence Api**: [https://rickandmortyapi.com/](https://rickandmortyapi.com/)
